@@ -5,24 +5,17 @@ import mysql.connector
 # CONEXIÓN A MYSQL
 # =========================================================
 def f_conectar():
-    # .strip() elimina espacios en blanco o saltos de línea invisibles
-    host = os.environ.get("DB_HOST", "bkpondqlssv4gg1ww591-mysql.services.clever-cloud.com").strip()
-    user = os.environ.get("DB_USER", "uwvepwmqjv86kc11").strip()
-    password = os.environ.get("DB_PASSWORD", "J65SliM1f6aKZnXXO9WG").strip()
-    database = os.environ.get("DB_NAME", "bkpondqlssv4gg1ww591").strip()
-    port = int(str(os.environ.get("DB_PORT", "3306")).strip())
-
     try:
         conexion = mysql.connector.connect(
-            host=host,
-            user=user,
-            password=password,
-            database=database,
-            port=port
+            host="bkpondqlssv4gg1ww591-mysql.services.clever-cloud.com",
+            user="uwvepwmqjv86kc11",
+            password="J65SliM1f6aKZnXXO9WG",
+            database="bkpondqlssv4gg1ww591",
+            port=3306
         )
         return conexion
     except mysql.connector.Error as err:
-        print(f"=== ERROR EXACTO DE MYSQL: {err} ===")
+        print(f"=== DETALLE DEL ERROR DE MYSQL: {err} ===")
         raise err
 
 # =========================================================
