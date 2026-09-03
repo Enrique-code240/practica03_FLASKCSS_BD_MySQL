@@ -5,14 +5,25 @@ import mysql.connector
 # CONEXIÓN A MYSQL
 # =========================================================
 def f_conectar():
-    # Si estamos en Render, leerá las variables de entorno; si no, usará los valores locales por defecto
-    conexion = mysql.connector.connect(
-        host=os.environ.get("DB_HOST", "localhost"),
-        user=os.environ.get("DB_USER", "root"),
-        password=os.environ.get("DB_PASSWORD", "Coque156"),
-        database=os.environ.get("DB_NAME", "comercio")
-    )
-    return conexion
+    # .strip() elimina espacios en blanco o saltos de línea invisibles
+    host = os.environ.get("DB_HOST", "bkpondqlssv4gg1ww591-mysql.services.clever-cloud.com").strip()
+    user = os.environ.get("DB_USER", "uwvepwmqjv86kc11").strip()
+    password = os.environ.get("DB_PASSWORD", "J65SliM1f6aKZnXXO9WG").strip()
+    database = os.environ.get("DB_NAME", "bkpondqlssv4gg1ww591").strip()
+    port = int(str(os.environ.get("DB_PORT", "3306")).strip())
+
+    try:
+        conexion = mysql.connector.connect(
+            host=host,
+            user=user,
+            password=password,
+            database=database,
+            port=port
+        )
+        return conexion
+    except mysql.connector.Error as err:
+        print(f"=== ERROR EXACTO DE MYSQL: {err} ===")
+        raise err
 
 # =========================================================
 # AGREGAR CLIENTE
