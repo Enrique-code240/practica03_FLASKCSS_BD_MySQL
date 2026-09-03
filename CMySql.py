@@ -11,7 +11,8 @@ def f_conectar():
             user="uwvepwmqjv86kc11",
             password="J65SliM1f6aKZnXXO9WG",
             database="bkpondqlssv4gg1ww591",
-            port=3306
+            port=3306,
+            connection_timeout=10
         )
         return conexion
     except mysql.connector.Error as err:
